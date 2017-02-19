@@ -4,7 +4,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var ENV = process.env.NODE_ENV || 'development';
-var FILENAME = 'rob-analytics-client';
+var FILENAME = 'rob-analytics-sdk';
 var isProduction = (ENV === 'production');
 
 var plugins = [

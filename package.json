@@ -1,8 +1,8 @@
 {
-  "name": "analytics-client",
+  "name": "analytics-js-sdk",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/rob-analytics-client.js",
+  "main": "dist/rob-analytics-sdk.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config --progress --colors",
     "watch": "webpack --config webpack.config --colors --watch",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhhb/analytics-client-js.git"
+    "url": "git+https://github.com/dhhb/analytics-js-sdk.git"
   },
   "author": "Dmitri Voronianski <dmitri.voronianski@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dhhb/analytics-client-js/issues"
+    "url": "https://github.com/dhhb/analytics-js-sdk/issues"
   },
-  "homepage": "https://github.com/dhhb/analytics-client-js#readme",
+  "homepage": "https://github.com/dhhb/analytics-js-sdk#readme",
   "dependencies": {
     "socket.io-client": "^1.7.3"
   },
