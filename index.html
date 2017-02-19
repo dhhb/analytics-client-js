@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Analytics Client Demo</title>
+</head>
+<body>
+  <script src="./dist/rob-analytics-client.js"></script>
+  <script>
+    window.robAnalyticsSDK
+      .config({url: 'http://localhost:9875'})
+      .install()
+      .ready(() => {
+        console.log('connected!');
+      });
+
+    window.robAnalyticsSDK.sendAdminUser({
+      id: '12345',
+      email: 'test@example.org'
+    });
+  </script>
+</body>
+</html>
