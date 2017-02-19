@@ -1,4 +1,7 @@
 import io from 'socket.io-client';
+import { EventEmitter } from 'events';
+
+class SocketsEmitter extends EventEmitter {}
 
 function createAnalyticsSDK () {
   const privateMethods = {};
@@ -18,6 +21,8 @@ function createAnalyticsSDK () {
     readyList = [];
   };
 
+  publicMethods.events = new SocketsEmitter();
+
   publicMethods.config = (opts = {}) => {
     if (!opts.url) {
       throw new Error('Analytics url is required');
@@ -33,6 +38,10 @@ function createAnalyticsSDK () {
 
     socket.on('connect', () => {
       privateMethods.triggerReady();
+
+      socket.on('connected-admin-user', user => {
+        publicMethods.events.emit('connected-admin-user', user);
+      });
     });
 
     return publicMethods;
@@ -49,7 +58,7 @@ function createAnalyticsSDK () {
   };
 
   publicMethods.sendAdminUser = (user = {}) => {
-    socket.emit('admin-user', user);
+    socket.emit('connect-admin-user', user);
 
     return publicMethods;
   };
