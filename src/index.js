@@ -7,7 +7,10 @@ function createAnalyticsSDK () {
   const privateMethods = {};
   const publicMethods = {};
 
-  let options = {}; // no defaults
+  let options = {
+    reconnection: true
+  };
+
   let readyList = [];
   let readyFired = false;
   let socket;
@@ -34,7 +37,9 @@ function createAnalyticsSDK () {
   };
 
   publicMethods.install = () => {
-    socket = io(options.url);
+    socket = io(options.url, {
+      reconnection: options.reconnection
+    });
 
     socket.on('connect', () => {
       privateMethods.triggerReady();

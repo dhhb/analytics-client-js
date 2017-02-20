@@ -92,7 +92,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var privateMethods = {};
 	  var publicMethods = {};
 
-	  var options = {}; // no defaults
+	  var options = {
+	    reconnection: true
+	  };
+
 	  var readyList = [];
 	  var readyFired = false;
 	  var socket = void 0;
@@ -123,7 +126,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  publicMethods.install = function () {
-	    socket = (0, _socket2.default)(options.url);
+	    socket = (0, _socket2.default)(options.url, {
+	      reconnection: options.reconnection
+	    });
 
 	    socket.on('connect', function () {
 	      privateMethods.triggerReady();
